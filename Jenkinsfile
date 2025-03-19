@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('be-code-analysis') {
+        stage('backend-code-analysis') {
             steps {
                 echo 'Sonar Analysis Started'
                 sh 'cd backend && sudo docker run --rm -e SONAR_HOST_URL="http://35.88.131.52:9000" -v "$(pwd):/usr/src" -e SONAR_TOKEN="sqp_05bffcd89426e4961e01b5f7206a525ea7066245" sonarsource/sonar-scanner-cli -Dsonar.projectKey=chat-app'
@@ -21,7 +21,7 @@ pipeline {
             }
         }   
 
-        stage('fe-code-analysis') {
+        stage('front-code-analysis') {
             steps {
                 echo 'Sonar Analysis Started'
                 sh 'cd frontend && sudo docker run --rm -e SONAR_HOST_URL="http://35.88.131.52:9000" -v "$(pwd):/usr/src" -e SONAR_TOKEN="sqp_05bffcd89426e4961e01b5f7206a525ea7066245" sonarsource/sonar-scanner-cli -Dsonar.projectKey=chat-app'
