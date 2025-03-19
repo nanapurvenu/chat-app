@@ -46,12 +46,6 @@ pipeline {
 
 
 
-Message Tejashwini
-
-
-
-
-
 
 
 
