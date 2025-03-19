@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Sonar Analysis Started'
                 sh '''
-                cd chatapp && sudo docker run --rm \
+                cd chat-app && sudo docker run --rm \
                 -e SONAR_HOST_URL="http://35.88.131.52:9000" \
                 -v "$(pwd):/usr/src" \
                 -e SONAR_TOKEN="sqp_05bffcd89426e4961e01b5f7206a525ea7066245" \
