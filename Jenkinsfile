@@ -1,26 +1,7 @@
 pipeline {
     agent any
 
-    stages {
-        stage('backend-code-analysis') {
-            steps {
-                echo 'Sonar Analysis Started'
-                sh 'cd backend && sudo docker run --rm -e SONAR_HOST_URL="http://35.88.131.52:9000" -v "$(pwd):/usr/src" -e SONAR_TOKEN="sqp_05bffcd89426e4961e01b5f7206a525ea7066245" sonarsource/sonar-scanner-cli -Dsonar.projectKey=chat-app'
-                echo 'Sonar Analysis Completed'
-            }
-        }
-
-        stage('build backend') {
-            steps {
-                script {
-                    def packageJson = readJSON file: 'chat-app/backend/package.json'
-                    def packageJSONVersion = packageJson.version
-                    echo "App Version: ${packageJSONVersion}"
-                    sh "cd chat-app/backend && docker build -t venureddy3417/chatapp-be:${packageJSONVersion} . && docker container run -dt --name chatapp-backend -p 8081:8080 venureddy3417/chatapp-be:${packageJSONVersion}"
-                }
-            }
-        }   
-
+    stages{
         stage('front-code-analysis') {
             steps {
                 echo 'Sonar Analysis Started'
