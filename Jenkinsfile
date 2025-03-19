@@ -22,7 +22,6 @@ pipeline {
                     def packageJson = readJSON file: 'chat-app/backend/package.json'
                     def packageJSONVersion = packageJson.version
                     echo "App Version: ${packageJSONVersion}"
-
                     sh """
                     cd chat-app/backend && \
                     docker build -t venureddy3417/chatapp-be:${packageJSONVersion} . && \
